@@ -16,6 +16,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Allow PowerShell scripts in this job
+      shell: pwsh
+      run: |
+         Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+         Get-ExecutionPolicy -List
+
+     
+    - name: Add dotnet to PATH
+      shell: pwsh
+      run: |
+         echo "DOTNET_ROOT=$env:DOTNET_INSTALL_DIR" >> $env:GITHUB_ENV
+         echo "$env:DOTNET_INSTALL_DIR" >> $env:GITHUB_PATH
+         dotnet --info
 
     
     - name: Restore dependencies
