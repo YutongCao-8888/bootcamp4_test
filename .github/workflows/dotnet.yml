@@ -5,13 +5,13 @@ name: Bootcamp_Test_Workflow
 
 on:
   push:
-    branches: [ main ]
+    branches: [ brunch ]
   pull_request:
-    branches: [ main ]
+    branches: [ brunch ]
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: ["self-hosted"]  
 
     steps:
     - uses: actions/checkout@v4
